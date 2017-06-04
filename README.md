@@ -1,46 +1,14 @@
+Welcome to [name to be decided] the media server for the people. 
 
-     ,-----.,--.                  ,--. ,---.   ,--.,------.  ,------.
-    '  .--./|  | ,---. ,--.,--. ,-|  || o   \  |  ||  .-.  \ |  .---'
-    |  |    |  || .-. ||  ||  |' .-. |`..'  |  |  ||  |  \  :|  `--, 
-    '  '--'\|  |' '-' ''  ''  '\ `-' | .'  /   |  ||  '--'  /|  `---.
-     `-----'`--' `---'  `----'  `---'  `--'    `--'`-------' `------'
-    ----------------------------------------------------------------- 
+# Motivation
+This project was created and designed for one purpose and one purpose only; to be useful. This philosophy makes this server one of the best options if you want something light weight and easy to use. The dream is for us to be able to handle our media the way that we want to with no string attached and no limitations.
 
+# Get Started
+This server is essential the backend for the UI of the project. This part takes care of storing things and sending out information about shows when needed. In order to run this at the moment(it is not functional yet) use the following steps
 
-Welcome to your Python project on Cloud9 IDE!
-
-To show what Cloud9 can do, we added a basic sample web application to this
-workspace, from the excellent Python tutorial _Learning Python the Hard Way_.
-We skipped ahead straight to example 50 which teaches how to build a web
-application.
-
-If you've never looked at the tutorial or are interested in learning Python,
-go check it out. It's a great hands-on way for learning all about programming
-in Python.
-
-* _Learning Python The Hard Way_, online version and videos: 
-http://learnpythonthehardway.org/book/
-
-* Full book: http://learnpythonthehardway.org
-
-## Starting from the Terminal
-
-To try the example application, type the following in the terminal:
-
-```
-cd ex50
-python bin/app.py
-```
-
-Alternatively, open the file in ex50/bin and click the green Run
-button!
-
-## Configuration
-
-You can configure your Python version and `PYTHONPATH` used in
-Cloud9 > Preferences > Project Settings > Language Support.
-
-## Support & Documentation
-
-Visit http://docs.c9.io for support, or to learn more about using Cloud9 IDE.
-To watch some training videos, visit http://www.youtube.com/user/c9ide.
+1. Clone the repository locally
+    * `git clone https://github.com/memo330179/pi-drive-flask.git `
+2. install dependencies using pip
+    * `pip install -r requirements.txt `
+3. run the server:
+    * `python run.py`
