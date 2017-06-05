@@ -1,7 +1,7 @@
 import os
 from flask import g, Blueprint, request, abort, url_for, jsonify
 from flask.ext.httpauth import HTTPBasicAuth
-from app.auth.models import User, UserSchema, db
+from app.models import User, UserSchema, db
 
 mod_auth = Blueprint('mod_auth', __name__)
 
