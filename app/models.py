@@ -1,11 +1,13 @@
 from flask import current_app
-from flask_sqlalchemy import SQLAlchemy
 from passlib.apps import custom_app_context as pwd_context
 from itsdangerous import (TimedJSONWebSignatureSerializer as
                             Serializer, BadSignature, SignatureExpired)
 from marshmallow import Schema, fields, ValidationError, pre_load
+from slugify import slugify
+from app import db
 
-db = SQLAlchemy()
+
+
 
 class User(db.Model):
     __tablename__ = 'users'
@@ -40,3 +42,31 @@ class UserSchema(Schema):
     id = fields.Int(dump_only=True)
     username = fields.Str()
     email = fields.Str()
+    
+    
+# API Models
+
+class Series(db.Model):
+  id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+  tmdb_id = db.Column(db.Integer)
+  title = db.Column(db.String(250), nullable=True)
+  overview = db.Column(db.String(), nullable=True)
+  slug = db.Column(db.String(250))
+  
+  def __init__(self, tmdb_id, title, overview, series_art):
+    self.tmdb_id = tmdb_id
+    self.title = title
+    self.overview = overview
+    self.series_art = series_art
+    self.slug = self.create_slug(self.title)
+    
+  def create_slug(self, title):
+    return slugify(title)
+    
+class SeriesSchema(Schema):
+  id = fields.Int(dump_only=True)
+  title = fields.Str()
+  overview = fields.Str()
+  slug = fields.Str()
+  series_art = fields.Str()
+  

@@ -1,16 +1,18 @@
 from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
+
+db = SQLAlchemy()
 
 def create_app(config_filename):
   app = Flask(__name__)
   app.config.from_object(config_filename)
   
-  from app.auth.models import db
+  from app.models import db
   db.init_app(app)
-  with app.app_context():
-    db.create_all()
   
   # Blueprints
   from app.auth.auth import mod_auth
-  app.register_blueprint(mod_auth, url_prefix='/api')
-  
+  app.register_blueprint(mod_auth, url_prefix='/auth')
+  from app.index.index import main
+  app.register_blueprint(main)
   return app
