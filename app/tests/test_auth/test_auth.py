@@ -1,5 +1,7 @@
 from app.tests.base import BaseTestCase
 import json
+from app.models import User
+from app import db
 
 class TestAuthCase(BaseTestCase):
   
@@ -14,4 +16,14 @@ class TestAuthCase(BaseTestCase):
                               follow_redirects = True)
     response = register.json
     assert response['username'] == 'test_user'
+  
+  def test_get_user(self):
+    user = User(username="testy", email="testy@test.com")
+    user.hash_password("password")
+    db.session.add(user)
+    db.session.commit()
+    user = self.client.get('/auth/users/1',
+                      follow_redirects = True)
+    response = user.json
+    assert response['username'] == 'testy' 
   
